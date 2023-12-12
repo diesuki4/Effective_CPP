@@ -16,11 +16,9 @@ public:
 
     // 복사 생성자
     // rhs로 새로운 객체를 생성할 때
-    Widget(const Widget& rhs)
+    Widget(const Widget& rhs) : pData(new int(*rhs.pData))
     {
-        cout << "복사 생성자 " << *rhs.pData << endl;
-
-        pData = new int(*rhs.pData);
+        cout << "복사 생성자 " << *pData << endl;
     }
 
     // 복사 대입 연산자
