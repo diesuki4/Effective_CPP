@@ -33,7 +33,11 @@ public:
     // e1 = e2; 같이 복사 대입 연산자가 필요할 때
     inline Empty& operator= (const Empty& rhs)
     {
-        // 얕은 복사임에 유의한다.
+        /*
+         * 상수 객체를 위한 const 오버로드 함수는 만들지 않는다.
+         * 
+         * 얕은 복사임에 유의한다.
+         */
         pData = rhs.pData;
         return *this;
     }
