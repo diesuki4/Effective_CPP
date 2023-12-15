@@ -43,4 +43,6 @@ int main(int argc, char* argv[])
 
     // 자기대입이면 바로 반환된다.
     (x = x).Show();
+    
+    return 0;
 }

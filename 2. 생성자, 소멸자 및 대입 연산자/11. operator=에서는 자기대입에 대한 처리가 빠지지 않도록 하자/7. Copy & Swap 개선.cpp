@@ -78,4 +78,6 @@ int main(int argc, char* argv[])
     cout << endl << "--- operator= 시작 ---" << endl << endl;
     x = y;
     cout << endl << "--- operator= 종료 ---" << endl << endl;
+    
+    return 0;
 }

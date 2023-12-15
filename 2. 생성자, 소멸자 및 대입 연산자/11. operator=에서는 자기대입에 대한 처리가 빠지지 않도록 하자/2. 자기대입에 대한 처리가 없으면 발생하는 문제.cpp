@@ -45,4 +45,6 @@ int main(int argc, char* argv[])
 
     // 오류 발생
     (x = x).Show();
+    
+    return 0;
 }

@@ -70,4 +70,6 @@ int main(int argc, char* argv[])
      * pData 에 접근하므로 오류 발생
      */
     x.Show();
+    
+    return 0;
 }

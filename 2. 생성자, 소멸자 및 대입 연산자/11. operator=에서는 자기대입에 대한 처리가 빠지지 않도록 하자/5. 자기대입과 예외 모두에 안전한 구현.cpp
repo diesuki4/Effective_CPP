@@ -92,4 +92,6 @@ int main(int argc, char* argv[])
      * 메모리는 해제되지 않았다.
      */
     x.Show();
+    
+    return 0;
 }

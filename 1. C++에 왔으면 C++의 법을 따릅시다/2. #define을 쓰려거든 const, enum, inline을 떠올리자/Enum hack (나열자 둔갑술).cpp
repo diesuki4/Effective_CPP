@@ -3,7 +3,7 @@
 using namespace std;
 
 /*
- * 나열자 둔갑술 (Enum hack)
+ * Enum hack (나열자 둔갑술)
  */
 
 class GamePlayer
@@ -27,6 +27,13 @@ class GamePlayer
      * 
      * 따라서, 다른 사람이 내 정수 상수의 주소를 얻는 것이 싫다면
      * Enum hack 을 이용해 방지할 수 있다.
+     */
+
+    /*
+     * 참고로, enum 은 변수가 아닌 타입이다.
+     *
+     * 따라서 데이터 영역에 저장되는 것이 아니고
+     * 컴파일러가 컴파일 타임에 참고해 치환하는 것일 뿐이다.
      */
     enum { NumTurns = 5 };
 

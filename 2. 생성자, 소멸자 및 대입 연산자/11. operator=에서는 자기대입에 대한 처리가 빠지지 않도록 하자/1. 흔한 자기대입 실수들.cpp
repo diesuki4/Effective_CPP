@@ -26,4 +26,6 @@ int main(int argc, char* argv[])
 
     // 마찬가지로 발생할 수 있는 실수다.
     *p = *q;
+    
+    return 0;
 }
