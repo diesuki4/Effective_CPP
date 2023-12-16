@@ -4,6 +4,10 @@ using namespace std;
 
 /*
  * auto_ptr을 통한 자동 소멸
+ *
+ * RAII (Resource Acquisition Is Initialization)
+ * 생성 시에 자원을 획득하고
+ * 소멸 시에 자원을 해제한다.
  */
 
 class Investment
@@ -62,8 +66,8 @@ void Func1(int num)
      * 
      * Investment *pInv = Investment::createInvestment(Investment::EType::LowRisk);
      * 
-     * 아래처럼 자원 획득과 자원 관리 객체의 초기화가 한 문장에서 이루어지는 것을
-     * RAII (Resource Acquisition Is Initialization) 라고 한다.
+     * 아래처럼 자원 획득과 자원 관리 객체의 초기화가
+     * 한 문장에서 이루어지는 것을 RAII 라고 한다.
      */
     auto_ptr<Investment> pInv(Investment::createInvestment(Investment::EType::LowRisk));
 
