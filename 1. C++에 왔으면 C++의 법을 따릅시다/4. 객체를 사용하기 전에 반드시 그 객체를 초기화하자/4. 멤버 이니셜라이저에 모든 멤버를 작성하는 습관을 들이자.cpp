@@ -6,7 +6,7 @@ using namespace std;
  * 멤버 이니셜라이저에 모든 멤버를 작성하는 습관을 들이자
  */
 
-class PhoneNumber {  };
+class PhoneNumber { };
 
 class ABEntry
 {

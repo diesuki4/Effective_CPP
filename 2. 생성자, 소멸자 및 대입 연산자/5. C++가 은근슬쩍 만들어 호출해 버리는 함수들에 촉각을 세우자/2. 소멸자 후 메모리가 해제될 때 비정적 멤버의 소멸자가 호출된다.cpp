@@ -23,8 +23,13 @@ class BBB
     AAA *pa;
 
 public:
+    /*
+     * 생성자에서는 몸체가 실행되기 전에
+     * 모든 멤버의 초기화가 이뤄진다.
+     * (객체의 경우 생성자가 호출)
+     */
     BBB() : a(1), pa(new AAA(2)) { cout << "BBB" << endl; }
-    ~BBB()              { cout << "~BBB" << endl; }
+    ~BBB() { cout << "~BBB" << endl; }
     /*
      * 소멸자가 호출된 후
      * 객체의 메모리가 해제될 때,

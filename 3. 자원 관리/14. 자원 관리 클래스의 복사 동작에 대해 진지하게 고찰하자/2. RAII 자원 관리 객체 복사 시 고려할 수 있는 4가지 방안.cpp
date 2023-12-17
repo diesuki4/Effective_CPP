@@ -112,6 +112,7 @@ class LockOwnership
     auto_ptr<mutex> mutexPtr;
 
 public:
+    // shared_ptr 과 달리 auto_ptr 은 삭제자를 설정할 수 없다.
     explicit LockOwnership(mutex* pm) : mutexPtr(pm)
     {
         lock(mutexPtr.get());
