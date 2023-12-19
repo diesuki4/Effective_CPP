@@ -1,0 +1,31 @@
+/*
+ * https://drdobbs.com/cpp/how-non-member-functions-improve-encapsu/184401197
+ * https://stackoverflow.com/questions/5989734/effective-c-item-23-prefer-non-member-non-friend-functions-to-member-functions
+ */
+
+if (가상 함수여야 한다면)
+{
+    멤버 함수로 만든다.
+}
+else if (<<, >> 연산자 오버로드라면)
+{
+    비멤버 함수로 만든다.
+    
+    if (Non-public 멤버에 접근해야 한다면)
+        friend로 만든다.
+}
+else if (가장 왼쪽 인자가 형 변환 되어야 한다면)
+{
+    비멤버 함수로 만든다.
+    
+    if (Non-public 멤버에 접근해야 한다면)
+        friend로 만든다.
+}
+else if (public 멤버 함수들로 구현이 가능하면)
+{
+    비멤버 함수로 만든다.
+}
+else
+{
+    멤버 함수로 만든다.
+}
