@@ -7,7 +7,7 @@ using namespace std;
  * PImpl (Pointer to Implementation)
  * 
  * 포인터를 활용해 선언부에서
- * 데이터 구현 세부를 감추는 방법이다.
+ * 데이터 구현 세부를 감추는 방식이다.
  */
 
 /*

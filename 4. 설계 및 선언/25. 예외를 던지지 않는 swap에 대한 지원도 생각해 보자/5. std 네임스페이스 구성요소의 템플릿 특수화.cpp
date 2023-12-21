@@ -26,8 +26,7 @@ public:
 
     }
 
-    Widget(const Widget& rhs)
-    : pImpl(new WidgetImpl(*rhs.pImpl))
+    Widget(const Widget& rhs) : pImpl(new WidgetImpl(*rhs.pImpl))
     {
         cout << "Widget::복사 생성자" << endl;
     }
@@ -55,6 +54,11 @@ public:
      */
     void swap(Widget& other)
     {
+        /*
+         * std::swap 을 끌어와 후순위에 둔다.
+         *
+         * 1 순위인 현재 함수 뒤에 2 순위로 찾아진다.
+         */
         using std::swap;
 
         swap(pImpl, other.pImpl);

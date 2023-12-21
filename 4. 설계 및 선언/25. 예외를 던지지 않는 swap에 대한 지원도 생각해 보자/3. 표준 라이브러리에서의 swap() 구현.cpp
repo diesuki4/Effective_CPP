@@ -19,8 +19,7 @@ public:
     }
 
     // 임시 객체 temp 를 만들 때 1번 호출
-    Widget(const Widget& rhs)
-    : a(rhs.a), b(rhs.b), c(rhs.c), v(rhs.v)
+    Widget(const Widget& rhs) : a(rhs.a), b(rhs.b), c(rhs.c), v(rhs.v)
     {
         cout << "Widget::복사 생성자" << endl;
     }

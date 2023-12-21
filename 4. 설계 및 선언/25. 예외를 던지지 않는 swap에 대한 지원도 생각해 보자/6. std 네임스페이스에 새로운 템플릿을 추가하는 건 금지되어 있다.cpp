@@ -30,8 +30,7 @@ public:
 
     }
 
-    Widget(const Widget& rhs)
-    : pImpl(new WidgetImpl<T>(*rhs.pImpl))
+    Widget(const Widget& rhs) : pImpl(new WidgetImpl<T>(*rhs.pImpl))
     {
         cout << "Widget::복사 생성자" << endl;
     }
