@@ -51,7 +51,11 @@ int main(int argc, char* argv[])
      * 포인터와 실제 객체가 올바른 상속 관계에 있는지
      * 결정하는 작업에 쓰인다.
      * 
-     * 런타임에 확인이 필요하므로, 비용이 높고
+     * 런타임에 확인이 필요하므로, 비용이 높다.
+     *
+     * 컴파일러 중에는 클래스 이름을 strcmp() 로 비교해
+     * 판단하는 경우도 있다.
+     *
      * 올바른 상속 관계가 아니라면 nullptr 이 반환된다.
      */
     if (dynamic_cast<Derived*>(pb) == nullptr)
@@ -66,7 +70,7 @@ int main(int argc, char* argv[])
      * 주소값 디버깅 등 Low-level 코드 이외에는
      * 거의 사용할 일이 없다.
      */
-    cout << reinterpret_cast<int>(pb) << endl;
+    cout << reinterpret_cast<int*>(pb) << endl;
 
     /*
      * static_cast
