@@ -63,5 +63,11 @@ int main(int argc, char* argv[])
     shared_ptr<Widget> pw(new Widget);
     processWidget(pw, priority());
 
+    /*
+     * 아래처럼 make_shared() 함수 내부에서
+     * Widget 객체가 생성되도록 해도 된다.
+     */
+    processWidget(make_shared<Widget>(), priority());
+
     return 0;
 }
