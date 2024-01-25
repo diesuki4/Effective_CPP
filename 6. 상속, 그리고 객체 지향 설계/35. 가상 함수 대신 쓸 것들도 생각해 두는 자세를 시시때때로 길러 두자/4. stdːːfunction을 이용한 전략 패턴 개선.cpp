@@ -90,6 +90,8 @@ int main(int argc, char* argv[])
      *
      * bind 를 통해 (GameLevel*, const GameCharacterSP&) 를
      * 하나의 인자를 받는 (const GameCharacterSP&) 함수로 바꿔준 것.
+     * 
+     * _1 위치에 const GameCharacterSP& 가 위치하게 된다.
      *
      * 결과적으로 ebg2 의 체력 계산은
      * currentLevel.health(const GameCharacterSP&) 로 계산되는 것이다. */
