@@ -24,7 +24,7 @@ class Person
 public:
     Person(const string& name, const Date& birthDay, const Address& addr);
 
-    string name() const;
-    Date birthDate() const;
+    string name()     const;
+    Date birthDate()  const;
     Address address() const;
 };

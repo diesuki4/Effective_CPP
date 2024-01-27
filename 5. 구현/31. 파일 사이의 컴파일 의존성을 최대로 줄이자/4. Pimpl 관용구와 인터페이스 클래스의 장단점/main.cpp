@@ -1,3 +1,9 @@
+/*
+ * https://www.cppstories.com/2018/01/pimpl/
+ * https://stackoverflow.com/questions/44483643/pimpl-idiom-memory-usage
+ * https://www.reddit.com/r/cpp/comments/66t2qg/reduce_c_build_times_with_the_pimpl_idiom/
+ * https://news.ycombinator.com/item?id=37015906
+ */
 #include <iostream>
 #include "Date.h"
 #include "Address.h"
@@ -14,6 +20,7 @@ using namespace std;
  * 
  * <단점>
  * Pimpl 의 경우 포인터의 생성, 소멸, 역참조, 크기 비용이 추가된다.
+ * 또, 여러 작은 동적 할당들로 인해 메모리 단편화가 발생할 수 있다.
  * 인터페이스 클래스의 경우 동적 바인딩 비용이 추가된다.
  * 둘 다 구현부가 헤더에 존재하지 않기 때문에, inline 최적화가 힘들다.
  * 

@@ -20,8 +20,8 @@ public:
         RealPerson
     };
 
-    virtual string name() const = 0;
-    virtual Date birthDate() const = 0;
+    virtual string name()     const = 0;
+    virtual Date birthDate()  const = 0;
     virtual Address address() const = 0;
 
     // 팩토리 함수 or 가상 생성자

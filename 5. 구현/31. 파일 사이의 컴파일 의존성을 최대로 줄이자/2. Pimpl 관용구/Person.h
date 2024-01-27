@@ -17,7 +17,7 @@ class Address;
  * Pimpl 에서 이런 클래스를 <핸들 클래스> 라고 한다. */
 class Person
 {
-    /* 구현 세부를 숨김
+    /* 구현 세부를 숨김 (unique_ptr 로 선언하는 게 일반적이다.)
      * 
      * 1. 포인터, 레퍼런스는 전방 선언만으로 충분하다. */
     shared_ptr<PersonImpl> pImpl;
@@ -26,7 +26,7 @@ public:
     Person(const string& name, const Date& birthDay, const Address& addr);
 
     // 2. 함수 선언에 사용되는 클래스도 전방 선언만으로 충분하다.
-    string name() const;
-    Date birthDate() const;
+    string name()     const;
+    Date birthDate()  const;
     Address address() const;
 };

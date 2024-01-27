@@ -16,6 +16,8 @@ public:
 
 /* 템플릿 메소드 패턴 (Template Method Pattern)
  *
+ * 이름과 달리, C++ 템플릿과는 하등 관련이 없다.
+ *
  * 비가상 인터페이스를 통해 가상 함수를 간접적으로 호출하므로
  * <비가상 함수 인터페이스(NVI, Non-Virtual Interface) 관용구> 라고도 한다.
  * 

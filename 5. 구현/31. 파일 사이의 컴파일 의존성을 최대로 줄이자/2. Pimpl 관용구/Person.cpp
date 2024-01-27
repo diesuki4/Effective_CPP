@@ -19,9 +19,6 @@ struct PersonImpl
 Person::Person(const string& name, const Date& birthDay, const Address& addr)
     : pImpl(new PersonImpl{name, birthDay, addr})
 {
-    pImpl->theName      = name;
-    pImpl->theBirthDate = birthDay;
-    pImpl->theAddress   = addr;
 }
 
 // 멤버에 접근하는 방식이 모두 동일하다.

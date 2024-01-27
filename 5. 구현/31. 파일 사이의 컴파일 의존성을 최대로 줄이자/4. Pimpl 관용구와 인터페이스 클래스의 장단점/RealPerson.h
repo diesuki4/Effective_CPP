@@ -20,8 +20,8 @@ public:
     {
     }
 
-    string name() const override { return theName; }
-    Date birthDate() const override { return theBirthDate; }
+    string name()     const override { return theName; }
+    Date birthDate()  const override { return theBirthDate; }
     Address address() const override { return theAddress; }
 
     virtual ~RealPerson() {}
