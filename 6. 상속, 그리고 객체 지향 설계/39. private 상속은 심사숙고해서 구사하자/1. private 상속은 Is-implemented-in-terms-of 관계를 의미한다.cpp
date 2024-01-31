@@ -7,7 +7,7 @@ using namespace std;
  *  
  * private 상속은 기능 몇 개를 활용할 목적으로 하는 것이다.
  *
- * private 상속을 하면 자식 클래스에서는 모두 private 으로 처리되는데
+ * private 상속을 하면 자식 클래스에서는 물려 받은 것들이 모두 private 으로 처리되는데
  * 이는 인터페이스가 아니라 세부 구현만을 물려 받겠다는 의미다.
  *
  * private 상속은 그 자체로 구현 기법 중 하나이며,
@@ -25,12 +25,12 @@ public:
     virtual void onTick() const {}
 };
 
-/* Timer 의 기능을 이용해 일정 시간마다 Widget 객체의 정보를 기록할 수 있다.
+/* Timer 의 기능을 이용해 일정 시간마다 Widget 객체의 정보를 기록하려고 한다.
  * 
- * Widget 은 기능을 이용할 뿐 Timer 의 일종이 아니고,
- * Widget 에서 onTick() 함수는 외부에 공개하는 인터페이스가 되면 안 되기 때문에
+ * Widget 은 기능을 이용할 뿐 Timer 의 일종(Is-A) 이 아니고,
+ * Widget 에서 onTick() 함수는 외부에 공개하는 인터페이스가 되면 안 된다.
  *
- * public 상속은 적합하지 않다. */
+ * 따라서, public 상속은 적합하지 않다. */
 class Widget : private Timer
 {
 private:
