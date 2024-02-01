@@ -1,6 +1,7 @@
 /*
  * https://dataonair.or.kr/db-tech-reference/d-lounge/technical-data/?mod=document&uid=235880
  * https://hwan-shell.tistory.com/224
+ * https://mariusbancila.ro/blog/2021/11/16/virtual-inheritance-in-c/
  */
 #include <iostream>
 
@@ -11,13 +12,23 @@ using namespace std;
  *
  * 일반적으로 가상 상속은 다중 상속에서 발생할 수 있는
  * 중복으로 인한 메모리 낭비, 생성자 호출을 줄이기 위해서 쓰나,
- * 
+ *
  * vbptr(가상 함수 테이블 포인터) 로 인해 항상 크기가 더 작아지는 것은 아니다.
- * 
+ *
  * 가상 상속으로 중복되는 부분의 크기를 줄일 때는,
  * 중복되는 부분이 충분히 커야 의미가 있다.
- * 
+ *
  * 또한, vfptr 과 마찬가지로 vbptr 도 런타임 비용을 요구한다.
+ *
+ * 그러므로, 가상 상속은 충분히 비쌀 수 있다.
+ *
+ * 1. 가능하면 가상 상속을 쓰지 말자.
+ * 2. 꼭 써야 한다면, Virtual Base Class 에는 멤버 변수를 넣지 말자.
+ *
+ * JAVA, .NET 등의 인터페이스에서는 멤버 변수를 가질 수 없도록 막고 있다.
+ *
+ * 멤버 변수가 없다면 아래로 이동된 멤버를 가리킬 vbptr 없이,
+ * vfptr 하나로도 충분하기 때문.
  */
 
 // 다이아몬드 상속
@@ -72,7 +83,9 @@ namespace diamond_inheritance
 namespace diamond_virtual_inheritance
 {
     /* Top 의 생성자는 MiddleA 나 MiddleB 가 아니라,
-     * Bottom 에 의해 1번 호출된다. */
+     * Bottom 에 의해 1번 호출된다.
+     *
+     * 이런 동작은 대입 연산자에서도 동일하게 적용된다. */
     class Top
     {
         int m_Top;
@@ -100,10 +113,10 @@ namespace diamond_virtual_inheritance
         ~MiddleB() { cout << "~MiddleB::생성자" << endl; }
     };
     /* Virtual Base Table 을 가리키는 vbptr(Virtual Base Table Pointer) 이 추가된다.
-     * 
+     *
      * 일단 가상 상속 고려 없이 레이아웃을 짠 후,
      * 가상 상속인 부분은 vbptr 로 대체 후 아래로 이동시키는 매커니즘이다.
-     * 
+     *
      * 이때, 중복되는 가상 부모 부분은 중복 없이 하나만 존재하도록 한다.
      *
      * 낮은 메모리 주소 (Top)
@@ -120,7 +133,7 @@ namespace diamond_virtual_inheritance
      * 오히려 가상 상속 전보다 크기가 4바이트 늘어났다.
      *
      * 또, vfptr 과 마찬가지로 vbptr 도 런타임 비용을 요구한다.
-     * 
+     *
      * Virtual Base Class 의 멤버 함수나 멤버 변수에 접근하기 위해서는
      * vbptr 을 1번 거쳐야 한다. */
     class Bottom : public MiddleA, public MiddleB
@@ -133,8 +146,8 @@ namespace diamond_virtual_inheritance
     };
 }
 
-// vbptr 의 구조
-namespace virtual_base_table_pointer_structure
+// vbptr 의 구조 1
+namespace virtual_base_table_pointer_structure_1
 {
     class Mom
     {
@@ -183,6 +196,53 @@ namespace virtual_base_table_pointer_structure
     };
 }
 
+// vbptr 의 구조 2
+namespace virtual_base_table_pointer_structure_2
+{
+    class Mom
+    {
+        int m_Mom;
+
+    public:
+        Mom()  { cout << "Mom::생성자"  << endl; }
+        ~Mom() { cout << "~Mom::생성자" << endl; }
+    };
+
+    class Dad
+    {
+        int m_Dad;
+
+    public:
+        Dad()  { cout << "Dad::생성자"  << endl; }
+        ~Dad() { cout << "~Dad::생성자" << endl; }
+
+        virtual void print() { cout << "Dad::print" << endl; }
+    };
+    /* 낮은 메모리 주소 (Top)
+   4 *
+   4 * m_Mom
+   4 * vbptr C    --->    [-4, 8]
+   4 * m_Child
+   4 * vfptr D
+   4 * m_Dad
+   4 *
+     * 높은 메모리 주소
+     *
+     * 부모가 가상 함수를 하나라도 가지면, 자식들도 모두 다형적 클래스가 된다.
+     * 따라서, 이때 vfptr 은 부모의 첫 번째 멤버로 1개만 있으면 된다.
+     *
+     * 부모가 다형적 클래스가 아니지만, 자식에서 가상 함수가 생겼을 때는
+     * 자식 부분의 첫 번째 멤버로 vfptr 이 추가된다. */
+    class Child : public Mom, virtual public Dad
+    {
+        int m_Child;
+
+    public:
+        Child()  { cout << "Child::생성자"  << endl; }
+        ~Child() { cout << "~Child::생성자" << endl; }
+    };
+}
+
 int main(int argc, char* argv[])
 {
     {
@@ -196,7 +256,12 @@ int main(int argc, char* argv[])
     }
     cout << endl;
     {
-        using namespace virtual_base_table_pointer_structure;
+        using namespace virtual_base_table_pointer_structure_1;
+        Child c;
+    }
+    cout << endl;
+    {
+        using namespace virtual_base_table_pointer_structure_2;
         Child c;
     }
 
