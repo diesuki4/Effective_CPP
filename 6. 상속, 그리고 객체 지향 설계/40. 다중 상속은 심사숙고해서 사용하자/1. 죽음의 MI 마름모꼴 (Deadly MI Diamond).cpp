@@ -38,7 +38,7 @@ namespace diamond_inheritance
         string fileName;
     };
 
-    class InputFile : public File {};
+    class InputFile  : public File {};
     class OutputFile : public File {};
 
     class IOFile : public InputFile, public OutputFile {};
@@ -54,7 +54,7 @@ namespace diamond_virtual_inheritance
 
     /* 표준 라이브러리의 basic_ios, basic_istream, basic_ostream, basic_iostream 이
      * 이렇게 가상 상속으로 구현되어 있다. */
-    class InputFile : virtual public File {};
+    class InputFile  : virtual public File {};
     class OutputFile : virtual public File {};
 
     class IOFile : public InputFile, public OutputFile {};
@@ -69,8 +69,8 @@ int main(int argc, char* argv[])
 
         /* MP3Player::checkOut() 이 모호합니다.
          *
-         * public 인 BorrowableItem::checkOut() 을
-         * 써야함이 자명한데도 모호성이 생긴다.
+         * public 인 BorrowableItem::checkOut() 만
+         * 호출할 수 있음이 자명한데도 모호성이 생긴다.
          *
          * C++ 의 함수 결정 규칙은 최적으로 일치하는(Best-match)
          * 함수를 먼저 확인한 후 접근성을 확인하기 때문.

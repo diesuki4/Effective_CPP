@@ -13,7 +13,7 @@ using namespace std;
  * 일반적으로 가상 상속은 다중 상속에서 발생할 수 있는
  * 중복으로 인한 메모리 낭비, 생성자 호출을 줄이기 위해서 쓰나,
  *
- * vbptr(가상 함수 테이블 포인터) 로 인해 항상 크기가 더 작아지는 것은 아니다.
+ * vbptr(Virtual Base Table Pointer) 로 인해 항상 크기가 더 작아지는 것은 아니다.
  *
  * 가상 상속으로 중복되는 부분의 크기를 줄일 때는,
  * 중복되는 부분이 충분히 커야 의미가 있다.
@@ -68,7 +68,9 @@ namespace diamond_inheritance
    4 * m_MiddleB
    4 * m_Bottom
    4 *
-     * 높은 메모리 주소 */
+     * 높은 메모리 주소
+     *
+     * 부모 부분은 자식보다 위(더 낮은 주소) 에 위치한다. */
     class Bottom : public MiddleA, public MiddleB
     {
     public:

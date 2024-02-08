@@ -9,7 +9,7 @@ shared_ptr<Person> Person::create(Type type, const string& name, const Date& bir
 
     switch (type)
     {
-    case Type::RealPerson: shPtr.reset(new RealPerson(name, birthday, addr));
+    case Type::RealPerson: shPtr.reset(new RealPerson(name, birthday, addr)); break;
     }
 
     return shPtr;
