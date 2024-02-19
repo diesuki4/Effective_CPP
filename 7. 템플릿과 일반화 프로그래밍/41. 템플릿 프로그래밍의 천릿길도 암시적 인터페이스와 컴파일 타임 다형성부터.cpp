@@ -46,7 +46,7 @@ void doProcessing(Widget& w)
 Widget someT;
 
 /* 함수 템플릿은 함수 내용에 따라 타입의 인터페이스를 작성해줘야 한다.
- * 이 떄의 중점은 본문의 표현식이다. */
+ * 이 때의 중점은 본문의 표현식이다. */
 template <typename T>
 void doProcessingT(T& t)
 {

@@ -22,7 +22,7 @@ void Func()
     int value = 0;
     // 의존 이름 (Dependent name)
     vector<T> vec;
-    /* 중첩 의존 이름(Nested dependent name)
+    /* 중첩 의존 이름 (Nested dependent name)
      * 
      * 컴파일러는 typename 키워드를 붙여주지 않는 한,
      * 중첩 의존 이름이 타입이라고 가정하지 않는다. */
